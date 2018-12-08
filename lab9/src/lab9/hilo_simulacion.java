@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,6 @@ public class hilo_simulacion extends Thread {
     }
 
     public hilo_simulacion(JProgressBar barra, JLabel tiempo_label, JLabel parada, JTable tablal, boolean avance, boolean vive, Autobus bus) {
-        System.out.println("entro");
         this.barra = barra;
         this.tiempo_label = tiempo_label;
         this.parada = parada;
@@ -54,59 +54,100 @@ public class hilo_simulacion extends Thread {
     public void run() {
         lista_Paradas = ordenar_paradas(bus);
         int tiempo;
-        Parada P_Actual;
+        int distancia;
+        Parada P_Siguiente;
+        Parada P_Anterior;
         int sub = 0;
         int time = 0;
         while (vive) {
             if (avance) {
-                P_Actual = lista_Paradas.get(sub);
-                parada.setText(P_Actual.getNombre());
-                tiempo_label.setText(String.valueOf(time) + " minutos");
-                tiempo = (int) (P_Actual.getDistancia() / bus.getVelocidad()) * 60;
-                barra.setMaximum(tiempo);
-                barra.setValue(barra.getValue() + 1);
-                System.out.println(barra.getValue());
-                if (barra.getValue() == barra.getMaximum()) {
-                    sub++;
-                    for (int i = 0; i < bus.getLista_estudiantes().size(); i++) {
-                        if (bus.getLista_estudiantes().get(i).getParada().getNombre().equals(parada.getText())) {
-                            System.out.println("se bajo " + bus.getLista_estudiantes().get(i).getNombre());
-//                            tablal.setModel(new javax.swing.table.DefaultTableModel(
-//                                    new Object[][]{},
-//                                    new String[]{
-//                                        "Parada", "Tiempo", "Estudiante"
-//                                    }
-//                            ) {
-//                                boolean[] canEdit = new boolean[]{
-//                                    false, false, false
-//                                };
-//
-//                                public boolean isCellEditable(int rowIndex, int columnIndex) {
-//                                    return canEdit[columnIndex];
-//                                }
-//                            });
-                            DefaultTableModel modelo = (DefaultTableModel) tablal.getModel();
-                            Object[] row = {parada.getText(), tiempo, bus.getLista_estudiantes().get(i).getNombre()};
-                            modelo.addRow(row);
-                            tablal.setModel(modelo);
-                        }
-                    }
+                if (sub < lista_Paradas.size()) {
+                    if (sub == 0) {
+                        P_Siguiente = lista_Paradas.get(sub);
+                        P_Anterior = null;
+                        parada.setText(P_Siguiente.getNombre());
+                        tiempo_label.setText(String.valueOf(time) + " minutos");
+                        distancia = (int) Math.sqrt(Math.pow((P_Siguiente.getCoordX() - 0), 2) + Math.pow((P_Siguiente.getCoordY() - 0), sub));
+                        tiempo = (int) (distancia / bus.getVelocidad()) * 60;
+                        barra.setMaximum(tiempo);
+                        System.out.println(barra.getMaximum());
+                        barra.setValue(barra.getValue() + 1);
+                        System.out.println(barra.getValue());
+                        if (barra.getValue() == barra.getMaximum()) {
+                            for (int i = 0; i < bus.getLista_estudiantes().size(); i++) {
+                                if (bus.getLista_estudiantes().get(i).getParada().getNombre().equals(parada.getText())) {
+                                    System.out.println("se bajo " + bus.getLista_estudiantes().get(i).getNombre());
+                                    DefaultTableModel modelo = (DefaultTableModel) tablal.getModel();
+                                    Object[] row = {parada.getText(), tiempo, bus.getLista_estudiantes().get(i).getNombre()};
+                                    modelo.addRow(row);
+                                    tablal.setModel(modelo);
 
+                                }
+                            }
+                            sub++;
+                            barra.setValue(0);
+                            JOptionPane.showMessageDialog(null, "Parada " + P_Siguiente.getNombre() + " Recorrida");
+                        }
+                        time++;
+                    } else {
+                        P_Siguiente = lista_Paradas.get(sub);
+                        P_Anterior = lista_Paradas.get(sub - 1);
+                        parada.setText(P_Siguiente.getNombre());
+                        tiempo_label.setText(String.valueOf(time) + " minutos");
+                        distancia = (int) Math.sqrt(Math.pow((P_Siguiente.getCoordX() - P_Anterior.getCoordX()), 2) + Math.pow((P_Siguiente.getCoordY() - P_Anterior.getCoordY()), sub));
+                        tiempo = (int) (distancia / bus.getVelocidad()) * 60;
+                        barra.setMaximum(tiempo);
+                        System.out.println(barra.getMaximum());
+                        barra.setValue(barra.getValue() + 1);
+                        System.out.println(barra.getValue());
+                        if (barra.getValue() == barra.getMaximum()) {
+                            for (int i = 0; i < bus.getLista_estudiantes().size(); i++) {
+                                if (bus.getLista_estudiantes().get(i).getParada().getNombre().equals(parada.getText())) {
+                                    System.out.println("se bajo " + bus.getLista_estudiantes().get(i).getNombre());
+                                    DefaultTableModel modelo = (DefaultTableModel) tablal.getModel();
+                                    Object[] row = {parada.getText(), tiempo, bus.getLista_estudiantes().get(i).getNombre()};
+                                    modelo.addRow(row);
+                                    tablal.setModel(modelo);
+                                    bus.getLista_estudiantes().remove(bus.getLista_estudiantes().get(i));
+                                }
+                            }
+                            sub++;
+                            barra.setValue(0);
+                            JOptionPane.showMessageDialog(null, "Parada " + P_Siguiente.getNombre() + " Recorrida");
+                        }
+                        time++;
+                    }
+                } else {
+                    P_Anterior = lista_Paradas.get(sub - 1);
+                    parada.setText("Unitec");
+                    tiempo_label.setText(String.valueOf(time) + " minutos");
+                    distancia = (int) Math.sqrt(Math.pow((0 - P_Anterior.getCoordX()), 2) + Math.pow((0 - P_Anterior.getCoordY()), sub));
+                    tiempo = (int) (distancia / bus.getVelocidad()) * 60;
+                    barra.setMaximum(tiempo);
+                    System.out.println(barra.getMaximum());
+                    barra.setValue(barra.getValue() + 1);
+                    System.out.println(barra.getValue());
+                    if (barra.getValue() == barra.getMaximum()) {
+                        avance = false;
+                    }
+                    time++;
                 }
-                time++;
+                if (avance == false) {
+                    vive = false;
+                }
             }
             try {
                 Thread.sleep(1000);
             } catch (Exception e) {
             }
         }
+        JOptionPane.showMessageDialog(null, "Ruta recorrida exitosamente");
     }
 
     public ArrayList ordenar_paradas(Autobus bus2) {
         ArrayList<Parada> temp = new ArrayList();
         ArrayList<Double> temp2 = new ArrayList();
         ArrayList<Parada> temp3 = new ArrayList();
-        System.out.println("Hola");
         for (int i = 0; i < bus.getLista_estudiantes().size(); i++) {
             Parada p = bus.getLista_estudiantes().get(i).getParada();
             temp.add(p);

@@ -407,9 +407,6 @@ public class Principal extends javax.swing.JFrame {
         modelo.removeElement(seleccionado);
         cb_estudiantes.setModel(modelo);
         ventana_agregar_al_bus.dispose();
-        for (Estudiante e : Bus.getLista_estudiantes()) {
-            System.out.println("[" + e.getNombre() + "]");
-        }
     }//GEN-LAST:event_jb_agregar_al_busMouseClicked
 
     private void jb_agregar_EstudianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregar_EstudianteMouseClicked
@@ -471,11 +468,6 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         Autobus busito = Bus;
         hilo_simulacion HS = new hilo_simulacion(jProgressBar1, jl_tiempo, jl_parada_actual, jTable1, true, true, busito);
-        for (Estudiante e : busito.getLista_estudiantes()) {
-            System.out.println("1");
-            System.out.println("[" + e.getNombre() + "]");
-            System.out.println("1");
-        }
         HS.start();
     }//GEN-LAST:event_jButton1MouseClicked
 
