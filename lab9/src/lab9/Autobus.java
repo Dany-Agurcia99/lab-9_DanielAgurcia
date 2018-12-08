@@ -63,7 +63,7 @@ public class Autobus {
 
     @Override
     public String toString() {
-        return "lista_estudiantes  " + lista_estudiantes;
+        return identificacion;
     }
 
 }

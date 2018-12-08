@@ -16,7 +16,7 @@ public class Parada {
         this.distancia = distancia;
         this.angulo = angulo;
         this.coordX = distancia * Math.cos(angulo);
-        this.coordY = coordY * Math.sin(angulo);
+        this.coordY = distancia * Math.sin(angulo);
     }
     
     public String getNombre() {
@@ -61,7 +61,7 @@ public class Parada {
     
     @Override
     public String toString() {
-        return "Parada :" + nombre + "\nDistancia: " + distancia + "\nAngulo: " + angulo + "\n(X:" + coordX + ",Y:" + coordY + ')';
+        return nombre;
     }
     
 }

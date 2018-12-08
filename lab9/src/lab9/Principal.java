@@ -14,11 +14,11 @@ import javax.swing.DefaultComboBoxModel;
  * @author Daniel Agurcia
  */
 public class Principal extends javax.swing.JFrame {
-
+    
     public Principal() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
         cb_estudiantes = new javax.swing.JComboBox<>();
         jb_agregar_al_bus = new javax.swing.JButton();
         jb_volver_meterBus = new javax.swing.JButton();
+        cb_buses_agregar = new javax.swing.JComboBox<>();
         ventana_agregar_parada = new javax.swing.JDialog();
         Nombre = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -57,6 +58,9 @@ public class Principal extends javax.swing.JFrame {
         tf_angulo_parada = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tf_distancia_parada = new javax.swing.JTextField();
+        ventana_selecbus = new javax.swing.JDialog();
+        cb_buses = new javax.swing.JComboBox<>();
+        jb_iniciar = new javax.swing.JButton();
         jl_tiempo = new javax.swing.JLabel();
         jl_parada_actual = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -221,6 +225,11 @@ public class Principal extends javax.swing.JFrame {
                 jb_agregar_al_busMouseClicked(evt);
             }
         });
+        jb_agregar_al_bus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregar_al_busActionPerformed(evt);
+            }
+        });
 
         jb_volver_meterBus.setText("Volver atras");
 
@@ -232,14 +241,16 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(ventana_agregar_al_busLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ventana_agregar_al_busLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(cb_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ventana_agregar_al_busLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jb_agregar_al_bus))
+                        .addComponent(cb_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_buses_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ventana_agregar_al_busLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jb_volver_meterBus)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jb_volver_meterBus))
+                    .addGroup(ventana_agregar_al_busLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jb_agregar_al_bus)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         ventana_agregar_al_busLayout.setVerticalGroup(
             ventana_agregar_al_busLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,10 +258,12 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jb_volver_meterBus)
                 .addGap(31, 31, 31)
-                .addComponent(cb_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addGroup(ventana_agregar_al_busLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_estudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_buses_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jb_agregar_al_bus)
-                .addGap(16, 16, 16))
+                .addGap(41, 41, 41))
         );
 
         Nombre.setText("Nombre");
@@ -304,10 +317,45 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
+        jb_iniciar.setText("Iniciar recorrido");
+        jb_iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_iniciarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ventana_selecbusLayout = new javax.swing.GroupLayout(ventana_selecbus.getContentPane());
+        ventana_selecbus.getContentPane().setLayout(ventana_selecbusLayout);
+        ventana_selecbusLayout.setHorizontalGroup(
+            ventana_selecbusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventana_selecbusLayout.createSequentialGroup()
+                .addGroup(ventana_selecbusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ventana_selecbusLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(cb_buses, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ventana_selecbusLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jb_iniciar)))
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+        ventana_selecbusLayout.setVerticalGroup(
+            ventana_selecbusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventana_selecbusLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(cb_buses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addComponent(jb_iniciar)
+                .addGap(63, 63, 63))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jl_tiempo.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         getContentPane().add(jl_tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 100, 20));
-        getContentPane().add(jl_parada_actual, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 491, 165, 39));
+
+        jl_parada_actual.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        getContentPane().add(jl_parada_actual, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 165, 39));
 
         jProgressBar1.setBackground(new java.awt.Color(255, 0, 0));
         jProgressBar1.setMaximum(5);
@@ -403,9 +451,12 @@ public class Principal extends javax.swing.JFrame {
     private void jb_agregar_al_busMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregar_al_busMouseClicked
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_estudiantes.getModel();
         Estudiante seleccionado = (Estudiante) modelo.getSelectedItem();
-        Bus.getLista_estudiantes().add(seleccionado);
         modelo.removeElement(seleccionado);
         cb_estudiantes.setModel(modelo);
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_buses_agregar.getModel();
+        Autobus busito = (Autobus) modelo2.getSelectedItem();
+        cb_buses_agregar.setModel(modelo2);
+        busito.getLista_estudiantes().add(seleccionado);
         ventana_agregar_al_bus.dispose();
     }//GEN-LAST:event_jb_agregar_al_busMouseClicked
 
@@ -446,7 +497,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearBMouseClicked
 
     private void jb_crearPArKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jb_crearPArKeyPressed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jb_crearPArKeyPressed
 
     private void jb_crearPArMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearPArMouseClicked
@@ -457,7 +508,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearPArMouseClicked
 
     private void jb_crear_busMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crear_busMouseClicked
-        Bus = new Autobus(tf_id_bus.getText(), tf_placa_bus.getText(), tf_color_bus.getText(), Double.parseDouble(tf_velocidad_bus.getText()));
+        Autobus Bus = new Autobus(tf_id_bus.getText(), tf_placa_bus.getText(), tf_color_bus.getText(), Double.parseDouble(tf_velocidad_bus.getText()));
+        lista_buses.add(Bus);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_buses.getModel();
+        modelo.addElement(Bus);
+        cb_buses.setModel(modelo);
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_buses_agregar.getModel();
+        modelo2.addElement(Bus);
+        cb_buses_agregar.setModel(modelo2);
         tf_id_bus.setText("");
         tf_placa_bus.setText("");
         tf_color_bus.setText("");
@@ -466,11 +524,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crear_busMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Autobus busito = Bus;
-        hilo_simulacion HS = new hilo_simulacion(jProgressBar1, jl_tiempo, jl_parada_actual, jTable1, true, true, busito);
-        HS.start();
+        ventana_selecbus.pack();
+        ventana_selecbus.setLocationRelativeTo(this);
+        ventana_selecbus.setModal(true);
+        ventana_selecbus.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jb_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_iniciarActionPerformed
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_buses.getModel();
+        Autobus busito = (Autobus) modelo.getSelectedItem();
+        cb_buses.setModel(modelo);
+        hilo_simulacion HS = new hilo_simulacion(jProgressBar1, jl_tiempo, jl_parada_actual, jTable1, true, true, busito);
+        HS.start();
+    }//GEN-LAST:event_jb_iniciarActionPerformed
+
+    private void jb_agregar_al_busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregar_al_busActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_agregar_al_busActionPerformed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -502,11 +573,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-    Autobus Bus = null;
+    ArrayList<Autobus> lista_buses = new ArrayList();
     ArrayList<Estudiante> lista_estudiantes = new ArrayList();
     ArrayList<Parada> lista_paradas = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nombre;
+    private javax.swing.JComboBox<String> cb_buses;
+    private javax.swing.JComboBox<String> cb_buses_agregar;
     private javax.swing.JComboBox<String> cb_estudiantes;
     private javax.swing.JComboBox<String> cb_paradas_agregar_estudiante;
     private javax.swing.JButton jButton1;
@@ -531,6 +604,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_crearB;
     private javax.swing.JButton jb_crearPAr;
     private javax.swing.JButton jb_crear_bus;
+    private javax.swing.JButton jb_iniciar;
     private javax.swing.JButton jb_volver;
     private javax.swing.JButton jb_volver_bus;
     private javax.swing.JButton jb_volver_meterBus;
@@ -550,5 +624,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog ventana_agregar_parada;
     private javax.swing.JDialog ventana_crear_bus;
     private javax.swing.JDialog ventana_crear_estduiante;
+    private javax.swing.JDialog ventana_selecbus;
     // End of variables declaration//GEN-END:variables
 }

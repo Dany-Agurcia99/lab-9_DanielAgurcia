@@ -61,11 +61,12 @@ public class hilo_simulacion extends Thread {
         int time = 0;
         while (vive) {
             if (avance) {
+                System.out.println(sub);
                 if (sub < lista_Paradas.size()) {
                     if (sub == 0) {
                         P_Siguiente = lista_Paradas.get(sub);
                         P_Anterior = null;
-                        parada.setText(P_Siguiente.getNombre());
+                        parada.setText("Parada"+P_Siguiente.getNombre());
                         tiempo_label.setText(String.valueOf(time) + " minutos");
                         distancia = (int) Math.sqrt(Math.pow((P_Siguiente.getCoordX() - 0), 2) + Math.pow((P_Siguiente.getCoordY() - 0), sub));
                         tiempo = (int) (distancia / bus.getVelocidad()) * 60;
@@ -81,18 +82,19 @@ public class hilo_simulacion extends Thread {
                                     Object[] row = {parada.getText(), tiempo, bus.getLista_estudiantes().get(i).getNombre()};
                                     modelo.addRow(row);
                                     tablal.setModel(modelo);
-
                                 }
                             }
+                            System.out.println(P_Siguiente.getNombre());
                             sub++;
                             barra.setValue(0);
                             JOptionPane.showMessageDialog(null, "Parada " + P_Siguiente.getNombre() + " Recorrida");
+                            time = 0;
                         }
                         time++;
                     } else {
                         P_Siguiente = lista_Paradas.get(sub);
                         P_Anterior = lista_Paradas.get(sub - 1);
-                        parada.setText(P_Siguiente.getNombre());
+                        parada.setText("Parada"+P_Siguiente.getNombre());
                         tiempo_label.setText(String.valueOf(time) + " minutos");
                         distancia = (int) Math.sqrt(Math.pow((P_Siguiente.getCoordX() - P_Anterior.getCoordX()), 2) + Math.pow((P_Siguiente.getCoordY() - P_Anterior.getCoordY()), sub));
                         tiempo = (int) (distancia / bus.getVelocidad()) * 60;
@@ -111,15 +113,19 @@ public class hilo_simulacion extends Thread {
                                     bus.getLista_estudiantes().remove(bus.getLista_estudiantes().get(i));
                                 }
                             }
+                            System.out.println(P_Siguiente.getNombre());
+                            System.out.println(P_Anterior.getNombre());
                             sub++;
                             barra.setValue(0);
                             JOptionPane.showMessageDialog(null, "Parada " + P_Siguiente.getNombre() + " Recorrida");
+                            time = 0;
                         }
                         time++;
                     }
                 } else {
                     P_Anterior = lista_Paradas.get(sub - 1);
-                    parada.setText("Unitec");
+                    System.out.println(P_Anterior.getNombre());
+                    parada.setText("Parada Unitec");
                     tiempo_label.setText(String.valueOf(time) + " minutos");
                     distancia = (int) Math.sqrt(Math.pow((0 - P_Anterior.getCoordX()), 2) + Math.pow((0 - P_Anterior.getCoordY()), sub));
                     tiempo = (int) (distancia / bus.getVelocidad()) * 60;
