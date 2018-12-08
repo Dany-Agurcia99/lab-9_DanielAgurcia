@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class hilo_simulacion extends Thread {
 
@@ -70,7 +71,24 @@ public class hilo_simulacion extends Thread {
                     for (int i = 0; i < bus.getLista_estudiantes().size(); i++) {
                         if (bus.getLista_estudiantes().get(i).getParada().getNombre().equals(parada.getText())) {
                             System.out.println("se bajo " + bus.getLista_estudiantes().get(i).getNombre());
-                            bus.getLista_estudiantes().remove(bus.getLista_estudiantes().get(i));
+//                            tablal.setModel(new javax.swing.table.DefaultTableModel(
+//                                    new Object[][]{},
+//                                    new String[]{
+//                                        "Parada", "Tiempo", "Estudiante"
+//                                    }
+//                            ) {
+//                                boolean[] canEdit = new boolean[]{
+//                                    false, false, false
+//                                };
+//
+//                                public boolean isCellEditable(int rowIndex, int columnIndex) {
+//                                    return canEdit[columnIndex];
+//                                }
+//                            });
+                            DefaultTableModel modelo = (DefaultTableModel) tablal.getModel();
+                            Object[] row = {parada.getText(), tiempo, bus.getLista_estudiantes().get(i).getNombre()};
+                            modelo.addRow(row);
+                            tablal.setModel(modelo);
                         }
                     }
 
