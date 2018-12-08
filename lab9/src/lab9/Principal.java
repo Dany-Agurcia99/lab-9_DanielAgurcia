@@ -14,11 +14,11 @@ import javax.swing.DefaultComboBoxModel;
  * @author Daniel Agurcia
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     public Principal() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,6 +61,7 @@ public class Principal extends javax.swing.JFrame {
         ventana_selecbus = new javax.swing.JDialog();
         cb_buses = new javax.swing.JComboBox<>();
         jb_iniciar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         jl_tiempo = new javax.swing.JLabel();
         jl_parada_actual = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -71,6 +72,7 @@ public class Principal extends javax.swing.JFrame {
         jb_crearB = new javax.swing.JButton();
         jb_crearPAr = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         jb_agregar_Estudiante.setText("Ingresar Estudiante");
         jb_agregar_Estudiante.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,6 +326,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setText("Buses");
+
         javax.swing.GroupLayout ventana_selecbusLayout = new javax.swing.GroupLayout(ventana_selecbus.getContentPane());
         ventana_selecbus.getContentPane().setLayout(ventana_selecbusLayout);
         ventana_selecbusLayout.setHorizontalGroup(
@@ -335,13 +339,18 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(cb_buses, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ventana_selecbusLayout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(jb_iniciar)))
+                        .addComponent(jb_iniciar))
+                    .addGroup(ventana_selecbusLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel11)))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
         ventana_selecbusLayout.setVerticalGroup(
             ventana_selecbusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ventana_selecbusLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_buses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(jb_iniciar)
@@ -355,7 +364,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jl_tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 100, 20));
 
         jl_parada_actual.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        getContentPane().add(jl_parada_actual, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 165, 39));
+        getContentPane().add(jl_parada_actual, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 165, 39));
 
         jProgressBar1.setBackground(new java.awt.Color(255, 0, 0));
         jProgressBar1.setMaximum(5);
@@ -425,6 +434,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 440, 171, 45));
+
+        jLabel12.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLabel12.setText("Parada");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -541,7 +554,7 @@ public class Principal extends javax.swing.JFrame {
     private void jb_agregar_al_busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregar_al_busActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_agregar_al_busActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -585,6 +598,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
